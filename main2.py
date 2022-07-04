@@ -23,13 +23,15 @@ screen = pygame.display.set_mode(size)
 done = False
 clock = pygame.time.Clock()
 
-seg = segment.Segment(0,100)
-seg2 = segment.Segment(0,100,seg)
-while not done:
+Seg_list = []
+Seg_list.append(segment.Segment(0,angle=0,length=10,start=[500,500],width=1))
+for id,Seg in enumerate(range(1,50)):
+    Seg_list.append(segment.Segment(id,angle=0,length=10,start=Seg_list[id-1].end,width=1))
 
+while not done:
     # This limits the while loop to a max of 10 times per second.
     # Leave this out and we will use all CPU we can.
-    clock.tick(10)
+    clock.tick(60)
      
     for event in pygame.event.get(): # User did something
         if event.type == pygame.QUIT: # If user clicked close
@@ -38,10 +40,17 @@ while not done:
     # Clear the screen and set the screen background
     screen.fill(BLACK)
     #update angle of segments
-    seg2.follow(list(pygame.mouse.get_pos()))
-    seg.follow()
-    seg2.draw(screen)
-    seg.draw(screen)
+    for id, Seg in enumerate(Seg_list):
+        if id == 0:
+            Seg.follow(list(pygame.mouse.get_pos()))
+        else:
+            Seg.follow(Seg_list[id-1].start)
+        
+        
+    # Draw the screen elements
+    for Seg in Seg_list:
+        Seg.draw(screen)
+        
     #update screen
     pygame.display.flip()
     

@@ -28,7 +28,7 @@ tentacles = []
 number_of_tentacles = 1
 wiggle_range = 1
 number_of_segments = 100
-tentancle_length = 500
+tentancle_length = 300
 for tentaclee in range(number_of_tentacles):
     color = (random.randint(0,255),random.randint(0,255),random.randint(0,255))
     tentacles.append(tentacle.tentacle(number_of_segments,tentacle_length=tentancle_length,width_range=[10,40],color=color))
