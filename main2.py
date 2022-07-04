@@ -29,7 +29,7 @@ width_range = [5,40]
 #customization caclulation
 segment_length = tentacle_length/number_of_segments
 width_shrink = (width_range[1]-width_range[0])/number_of_segments
-print(segment_length)
+
 Seg_list = []
 Seg_list.append(segment.Segment(0,angle=0,length=segment_length,start=[500,500],width=width_range[0]))
 for id,Seg in enumerate(range(1,number_of_segments)):
