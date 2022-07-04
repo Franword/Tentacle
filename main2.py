@@ -22,11 +22,18 @@ screen = pygame.display.set_mode(size)
 #Loop until the user clicks the close button.
 done = False
 clock = pygame.time.Clock()
-
+#customization
+number_of_segments = 100
+tentacle_length = 1000
+width_range = [5,40]
+#customization caclulation
+segment_length = tentacle_length/number_of_segments
+width_shrink = (width_range[1]-width_range[0])/number_of_segments
+print(segment_length)
 Seg_list = []
-Seg_list.append(segment.Segment(0,angle=0,length=10,start=[500,500],width=1))
-for id,Seg in enumerate(range(1,50)):
-    Seg_list.append(segment.Segment(id,angle=0,length=10,start=Seg_list[id-1].end,width=1))
+Seg_list.append(segment.Segment(0,angle=0,length=segment_length,start=[500,500],width=width_range[0]))
+for id,Seg in enumerate(range(1,number_of_segments)):
+    Seg_list.append(segment.Segment(id,angle=0,length=segment_length,start=Seg_list[id-1].end,width=int(width_range[0]+id*width_shrink)))
 
 while not done:
     # This limits the while loop to a max of 10 times per second.
@@ -44,15 +51,12 @@ while not done:
         if id == 0:
             Seg.follow(list(pygame.mouse.get_pos()))
         else:
-            Seg.follow(Seg_list[id-1].start)
-        
-        
+            Seg.follow(Seg_list[id-1].start)   
     # Draw the screen elements
     for Seg in Seg_list:
         Seg.draw(screen)
-        
     #update screen
     pygame.display.flip()
-    
+
 # Be IDLE friendly
 pygame.quit()
