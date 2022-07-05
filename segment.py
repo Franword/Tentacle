@@ -20,6 +20,11 @@ class Segment:
         pygame.draw.circle(screen, color, self.start, self.width/2)
         # pygame.draw.circle(screen, color, self.end, self.width/2)
         pygame.draw.line(screen, color, self.start, self.end, self.width)
+    def move_segment(self,vector):
+        self.start[0] += vector[0]
+        self.start[1] += vector[1]
+        self.end[0] += vector[0]
+        self.end[1] += vector[1]
 
     def update_angle(self,angle): 
         self.angle = angle

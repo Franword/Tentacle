@@ -21,7 +21,7 @@ done = False
 clock = pygame.time.Clock()
 
 tentacles = []
-number_of_tentacles = 3
+number_of_tentacles = 1
 for tentaclee in range(number_of_tentacles):
     color = (random.randint(0,255),random.randint(0,255),random.randint(0,255))
     tentacle_length = random.randint(300,600)
@@ -41,6 +41,7 @@ while not done:
         # tentaclee.update_angle(range_of_angle=1)
         # tentaclee.wiggle(wiggle_range)
         tentaclee.follow(list(pygame.mouse.get_pos()))
+        tentaclee.pin_root([500,500])
     # Draw the screen elements
     for tentaclee in tentacles:
         tentaclee.draw(screen)

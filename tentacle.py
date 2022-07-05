@@ -31,6 +31,11 @@ class tentacle:
             else:
                 segment.follow(self.segments[id-1].start)
 
+    def pin_root(self,fixed_point):
+        actual_root = self.segments[0].start
+        vector = [actual_root[0]-fixed_point[0],actual_root[1]-fixed_point[1]]
+        for segment in self.segments:
+            segment.move_segment(vector)
     # def update_angle(self,range_of_angle):
     #     for Seg in self.Seg_list:
     #         Seg.update_angle(Seg.get_angle()+random.randint(-range_of_angle,range_of_angle))
