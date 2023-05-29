@@ -1,14 +1,17 @@
 <h1 align="center">Welcome to Tentacle 👋</h1>
-Colorfull tentacles using inverse kinematics. You can change length, color, quantity, position etc. You can also move tentacle with WSAD controls.
+Colorfull tentacles using inverse kinematics.
+
 ## Usage
+
 ```sh
 python main.py
 ```
 ## Examples
-### Tentacle
-![](readme_content/tentacle.gif)
+
 ### Monster
 ![](readme_content/monster.gif)
+### Tentacle
+![](readme_content/tentacle.gif)
 ### Snake
 ![](readme_content/snake.gif)
 ### Whip
